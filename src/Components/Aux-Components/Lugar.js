@@ -11,13 +11,10 @@ export default function Assento({id, nome, livre, idAssentos, setIdAssentos}) {
             {livre === false && <Indisponivel onClick={() => {ChamaAlert()}}> <p>{nome}</p> </Indisponivel>}
             {livre === true && escolhido === false && <Lugar onClick={() => { 
                 setEscolhido(true)
-                 {/*setIdAssentos((idAssentos => [...idAssentos, id]))*/}
+                setIdAssentos([...idAssentos, id])
                 }}> <p>{nome}</p> </Lugar>}
             {livre === true && escolhido === true && <Selecionado onClick={() => { 
                 setEscolhido(false)
-                {/*this.setIdAssentos({
-                    data: this.state.data.filter((_, i) => i !== id)
-                  });*/}
                 }}> <p>{nome}</p> </Selecionado>}
         </Fileira>
     );

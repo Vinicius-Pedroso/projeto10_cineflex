@@ -2,8 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import Cabecario from './Aux-Components/Cabecario';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
-export default function Tela4() {
+export default function Tela4({dadosFinais}) {
+
+    console.log(dadosFinais)
+
     return (
         <>
             <Cabecario></Cabecario>
@@ -15,14 +19,14 @@ export default function Tela4() {
                 </p>
             </Boxfilme>
             <h1>Filme e sessão</h1>
-            <h2>Enola Holmes</h2>
-            <h3>24/06/2021 15:00</h3>
+            <h2>{dadosFinais.dados.movie.title}</h2>
+            <h3>{dadosFinais.dados.day.weekday} {dadosFinais.dados.day.date}</h3>
             <h1>Ingressos</h1>
             <h2>Assento 13</h2>
             <h3>Assento 14</h3>
             <h1>Comprador</h1>
-            <h2>Alexandre Silva</h2>
-            <h3>123.456.789.00</h3>
+            <h2>{dadosFinais.name}</h2>
+            <h3>{dadosFinais.cpf}</h3>
         </Layout>
         <Link to="/">
             <Botao><p>Voltar para a home</p></Botao>

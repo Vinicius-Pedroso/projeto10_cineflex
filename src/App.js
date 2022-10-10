@@ -16,8 +16,8 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Tela1/>} />
                     <Route path="/sessoes/:idFilme" element={<Tela2 />} />
-                    <Route path="/assentos/:idSessao" element={<Tela3 setdados={setDadosFinais}/>} />
-                    <Route path="/Sucesso" element={<Tela4/>} />
+                    <Route path="/assentos/:idSessao" element={<Tela3 setDadosFinais={setDadosFinais}/>} />
+                    <Route path="/Sucesso" element={<Tela4 dadosFinais={dadosFinais}/>} />
                 </Routes>
         </BrowserRouter>
         </Corpo>
