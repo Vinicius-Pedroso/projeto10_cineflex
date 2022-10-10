@@ -9,12 +9,16 @@ import { useParams } from "react-router-dom";
 export default function Tela2 (){
 
     const[dadosFilme, setDadosFilme] = useState([])
+    const[data, setData] = useState([])
     const params = useParams().idFilme;
 
     useEffect(() => {
         const PegaDados = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${params}/showtimes`)
 
-        PegaDados.then(resposta => setDadosFilme(resposta.data))
+        PegaDados.then(resposta => {
+            setDadosFilme(resposta.data)
+            setData(resposta.data.days)
+        })
         PegaDados.catch(error => console.log(error))
     }, [])
 
@@ -26,18 +30,13 @@ export default function Tela2 (){
         );
     }
 
-    console.log(dadosFilme);
-
     return (
         <>
             <Cabecario></Cabecario>
             <Selecione text="o horário"></Selecione>
-            {dadosFilme.map(sessao => (
-                <Boxhora dia={sessao.days.weekday} data={sessao.days.date} horarios={sessao.days.showtime}>
-                </Boxhora>
-            ))  }
-
-            <Boxhora></Boxhora>
+            {data.map(days => (
+                <Boxhora props={days}></Boxhora>
+            ))}
             <Footer imgURL={dadosFilme.posterURL} titulo={dadosFilme.title}> </Footer>
         </>
     );

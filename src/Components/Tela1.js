@@ -25,6 +25,8 @@ export default function Tela1() {
         );
     }
 
+    console.log(filmes)
+
     return (
         <>
             <Cabecario></Cabecario>
