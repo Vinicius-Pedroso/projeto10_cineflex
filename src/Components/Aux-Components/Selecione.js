@@ -10,9 +10,9 @@ export default function Selecione(props) {
 }
 
 const Boxfilme = styled.div`
-    height: 110px;
+    height: 80px;
     width: 100%;
-    background-color: #E5E5E5;
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;

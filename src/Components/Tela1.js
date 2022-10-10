@@ -25,8 +25,6 @@ export default function Tela1() {
         );
     }
 
-    console.log(filmes)
-
     return (
         <>
             <Cabecario></Cabecario>
@@ -45,19 +43,17 @@ export default function Tela1() {
 }
 
 const ArranjoFilmes = styled.div`
-    background-color: #E5E5E5;
+    background-color: white;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center; 
-
     img {
         width: 40%;
     }
 `
 
 const FilmeBox = styled.div`
-    border: 18px;
-    border-color: black;
+
 `

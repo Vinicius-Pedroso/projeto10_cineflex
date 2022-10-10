@@ -18,6 +18,7 @@ export default function Legendas() {
 }
 
 const Legenda = styled.div`
+    margin-top: 10px;
     margin-left: 20%;
     width: 60%;
     display: flex;

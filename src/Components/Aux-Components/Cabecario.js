@@ -10,7 +10,7 @@ export default function Cabecario() {
 }
 
 const Cabeca = styled.div`
-width: auto;
+width: 100%;
 height: 67px;
 background-color: #C3CFD9;
 display: flex;

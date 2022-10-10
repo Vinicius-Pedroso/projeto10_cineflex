@@ -5,17 +5,17 @@ import { Link } from "react-router-dom";
 export default function Boxhora(dados) {
 
     const data = Object.values(dados)
-    console.log(data[0])    
+
     return (
         <Boxhorario>
             <h1>{data[0].weekday} - {data[0].date}</h1>
             <span>
-                <Link to="/assentos/:idSessao">
+                <Link to={`/assentos/${data[0].showtimes[0].id}`}>
                 <Hora>
                     <p>{data[0].showtimes[0].name}</p>
                 </Hora>
                 </Link>
-                <Link to="/assentos/:idSessao">
+                <Link to={`/assentos/${data[0].showtimes[1].id}`}>
                 <Hora>
                     <p>{data[0].showtimes[1].name}</p>
                 </Hora>

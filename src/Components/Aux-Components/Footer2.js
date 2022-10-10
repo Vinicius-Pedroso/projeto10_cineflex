@@ -1,16 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function Footer({imgURL, titulo}){
+export default function Footer2(){
 
     return (
         <Progresso>
             <Caixa>
-                <img src={imgURL} />
+                <img src={"a"} />
             </Caixa>
+            <Vertical>
             <Textfilme>
-                <p>{titulo}</p>
+                <p>1</p>
             </Textfilme>
+            <Textfilme>
+                <p>1 - 1</p>
+            </Textfilme>
+            </Vertical>
+            
         </Progresso>
     );
 }
@@ -44,6 +50,10 @@ const Caixa = styled.div`
         width: 48px;
         height: 72px;
     }
+`
+
+const Vertical = styled.div`
+    display: block;
 `
 
 const Textfilme = styled.div`
