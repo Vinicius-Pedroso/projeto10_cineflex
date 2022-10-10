@@ -4,12 +4,10 @@ import { useState } from 'react';
 
 export default function Assento({id, nome, livre}) {
 
-    console.log(id)
-
     return (
         <Fileira>
             {!livre ? (
-                <Indisponivel>
+                <Indisponivel >
                     <p>{nome}</p>
                 </Indisponivel>
             ) : (
@@ -34,8 +32,8 @@ const Fileira = styled.div`
 const Lugar = styled.div`
     width: 26px;
     height: 26px;
-    margin-left: 4px;
-    margin-right: 4px;
+    margin-left: 3px;
+    margin-right: 3px;
     background-color: #C3CFD9;
     border: 1px solid #808F9D;
     border-radius: 100%;
@@ -50,8 +48,8 @@ const Lugar = styled.div`
 const Selecionado = styled.div`
     width: 26px;
     height: 26px;
-    margin-left: 4px;
-    margin-right: 4px;
+    margin-left: 3px;
+    margin-right: 3px;
     background-color: #8DD7CF;
     border: 1px solid;
     border-color: #1AAE9E;
@@ -67,8 +65,8 @@ const Selecionado = styled.div`
 const Indisponivel = styled.div`
     width: 26px;
     height: 26px;
-    margin-left: 4px;
-    margin-right: 4px;
+    margin-left: 3px;
+    margin-right: 3px;
     border: 1px solid;
     background-color: #FBE192;
     border-color: #F7C52B;

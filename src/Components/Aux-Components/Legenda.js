@@ -26,6 +26,7 @@ const Legenda = styled.div`
     justify-content: space-evenly;
     p{
         font-size: 13px;
+        color: #4E5A65;
     }
 `
 const Lugar = styled.div`

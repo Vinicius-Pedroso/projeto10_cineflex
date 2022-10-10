@@ -36,7 +36,7 @@ export default function Tela2 (){
             <Cabecario></Cabecario>
             <Selecione text="o horário"></Selecione>
             {data.map(days => (
-                <Boxhora props={days}></Boxhora>
+                <Boxhora props={days} key={days.id}></Boxhora>
             ))}
             <Caixabranca></Caixabranca>
             <Footer imgURL={dadosFilme.posterURL} titulo={dadosFilme.title}> </Footer>
