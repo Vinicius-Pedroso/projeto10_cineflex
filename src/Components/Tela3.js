@@ -10,18 +10,21 @@ import styled from 'styled-components';
 import Cabecario from './Aux-Components/Cabecario';
 import { Link } from 'react-router-dom';
 
-export default function Tela3 (){
+export default function Tela3 (setdados){
     
     const params = useParams().idSessao
     const [dados, setDados] = useState([])
     const [nome, setNome] = useState()
     const [cpf, setCpf] = useState()
+    const [seats, setSeats] = useState([])
+    const [idAssentos, setIdAssentos] = useState([1, 2, 3])
 
     useEffect(() => {
         const PegaDados = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${params}/seats`)
 
         PegaDados.then(response => {
-            setDados(response.data.seats)
+            setDados(response.data)
+            setSeats(response.data.seats)
         })
         PegaDados.catch(error => console.log(error))
     }, [])
@@ -39,8 +42,8 @@ export default function Tela3 (){
             <Cabecario></Cabecario>
             <Selecione text="o(s) assento(s)"></Selecione>
             <Sequencia>
-            {dados.map(lugar => (
-                <Assento id={lugar.id} nome={lugar.name} livre={lugar.isAvailable} key={lugar.id}></Assento>
+            {seats.map(lugar => (
+                <Assento props={lugar.id} nome={lugar.name} livre={lugar.isAvailable} key={lugar.id} inicial={idAssentos} escolhido={setIdAssentos}></Assento>
             ))}
             </Sequencia>
             <Legendas></Legendas>
@@ -52,13 +55,29 @@ export default function Tela3 (){
             <Boxinfo input type="text" placeholder="Digite seu CPF" value={cpf} onChange={e => setCpf(e.target.value)}>
             </Boxinfo>
             <Link to="/sucesso">
-            <Botao><p>Reservar assento(s)</p></Botao>
+                <Botao onClick={() => {EnviarPedido(nome, cpf, idAssentos)}}><p>Reservar assento(s)</p></Botao>
             </Link>
             </Ajuste>
             <Caixabranca></Caixabranca>
-            <Footer2></Footer2>
+            <Footer2 idfilme={params}></Footer2>
         </>
     );
+}
+
+
+function EnviarPedido (nome, cpf, idAssentos){
+
+    console.log(idAssentos)
+
+    const pedido = {
+        ids: {idAssentos},
+        name: {nome},
+        cpf: {cpf}
+    }
+
+    const postdados = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", pedido)
+
+    postdados.then(() => {<Link to="/sucesso"></Link>})
 }
 
 const Sequencia = styled.div`

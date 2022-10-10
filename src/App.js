@@ -4,17 +4,21 @@ import Tela2 from "./Components/Tela2";
 import Tela3 from "./Components/Tela3";
 import Tela4 from "./Components/Tela4";
 import styled from "styled-components";
+import { useState } from "react";
 
 export default function App() {
+
+    const [dadosFinais, setDadosFinais] = useState()
+
     return (
         <Corpo>
-                    <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Tela1/>} />
-                <Route path="/sessoes/:idFilme" element={<Tela2 />} />
-                <Route path="/assentos/:idSessao" element={<Tela3/>} />
-                <Route path="/Sucesso" element={<Tela4/>} />
-            </Routes>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Tela1/>} />
+                    <Route path="/sessoes/:idFilme" element={<Tela2 />} />
+                    <Route path="/assentos/:idSessao" element={<Tela3 setdados={setDadosFinais}/>} />
+                    <Route path="/Sucesso" element={<Tela4/>} />
+                </Routes>
         </BrowserRouter>
         </Corpo>
 

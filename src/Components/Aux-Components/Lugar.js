@@ -2,22 +2,29 @@ import React from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
 
-export default function Assento({id, nome, livre}) {
+export default function Assento({id, nome, livre, idAssentos, setIdAssentos}) {
+
+    const [escolhido, setEscolhido] = useState(false)
 
     return (
         <Fileira>
-            {!livre ? (
-                <Indisponivel >
-                    <p>{nome}</p>
-                </Indisponivel>
-            ) : (
-                <Lugar>
-                    <p>{nome}</p>
-                </Lugar>
-            )}
-            
+            {livre === false && <Indisponivel onClick={() => {ChamaAlert()}}> <p>{nome}</p> </Indisponivel>}
+            {livre === true && escolhido === false && <Lugar onClick={() => { 
+                setEscolhido(true)
+                 {/*setIdAssentos((idAssentos => [...idAssentos, id]))*/}
+                }}> <p>{nome}</p> </Lugar>}
+            {livre === true && escolhido === true && <Selecionado onClick={() => { 
+                setEscolhido(false)
+                {/*this.setIdAssentos({
+                    data: this.state.data.filter((_, i) => i !== id)
+                  });*/}
+                }}> <p>{nome}</p> </Selecionado>}
         </Fileira>
     );
+}
+//
+function ChamaAlert (){
+    alert("Esse assento não está disponível")
 }
 
 const Fileira = styled.div`

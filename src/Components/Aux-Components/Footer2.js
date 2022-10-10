@@ -1,19 +1,45 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-export default function Footer2(){
+export default function Footer2(idfilme){
+
+    const idAxios = Object.values(idfilme)
+    const [footerInfo, setFooterInfo] = useState([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+
+        setLoading(true)
+        const PegaDados = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idAxios}/seats`)
+
+        PegaDados.then(response => {
+            setFooterInfo(response.data)
+            setLoading(false)
+        })
+        PegaDados.catch(error => console.log(error))
+    }, [])
+
+    if (loading === true){
+        return (
+            <div>
+                <h1>Loading</h1>
+            </div>
+        );
+    }
 
     return (
         <Progresso>
             <Caixa>
-                <img src={"a"} />
+                <img src={footerInfo.movie.posterURL} />
             </Caixa>
             <Vertical>
             <Textfilme>
-                <p>1</p>
+                <p>{footerInfo.movie.title}</p>
             </Textfilme>
             <Textfilme>
-                <p>1 - 1</p>
+                <p>{footerInfo.day.weekday} - {footerInfo.day.date}</p>
             </Textfilme>
             </Vertical>
             
