@@ -4,6 +4,7 @@ import Selecione from "./Aux-Components/Selecione";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import Footer from "./Aux-Components/Footer";
+import styled from "styled-components";
 import { useParams } from "react-router-dom";
 
 export default function Tela2 (){
@@ -37,7 +38,13 @@ export default function Tela2 (){
             {data.map(days => (
                 <Boxhora props={days}></Boxhora>
             ))}
+            <Caixabranca></Caixabranca>
             <Footer imgURL={dadosFilme.posterURL} titulo={dadosFilme.title}> </Footer>
         </>
     );
 }
+
+const Caixabranca = styled.div`
+    height: 147px;
+    width: 100hv;
+`

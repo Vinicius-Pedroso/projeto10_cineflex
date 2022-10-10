@@ -5,6 +5,7 @@ export default function Footer({imgURL, titulo}){
 
     return (
         <Progresso>
+            <Caixabranca></Caixabranca>
             <Caixa>
                 <img src={imgURL} />
             </Caixa>
@@ -14,6 +15,10 @@ export default function Footer({imgURL, titulo}){
         </Progresso>
     );
 }
+
+const Caixabranca = styled.div`
+    height: 88;    
+`
 
 const Progresso = styled.span`
     border: solid;
@@ -30,6 +35,7 @@ const Progresso = styled.span`
 `
 
 const Caixa = styled.div`
+
     height: 88px;
     width: 64px;
     background-color: white;
